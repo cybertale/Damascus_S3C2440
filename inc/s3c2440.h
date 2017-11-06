@@ -1,0 +1,68 @@
+#ifndef __s3c2440_H
+#define __s3c2440_H
+
+#include <stdint.h>
+
+#define WTCON 		0x53000000
+#define INTMSK 		0x4A000008
+#define INTSUBMSK 	0x4A00001C
+
+#define LOCKTIME 	0x4c000000
+#define MPLLCON 	0x4C000004
+#define CLKDIVN 	0x4C000014
+#define FCLK 		320000000
+#define M_MDIV 		127
+#define M_PDIV 		2
+#define M_SDIV 		1
+
+#define BWSCON 		0x48000000
+#define BANKCON6 	0x4800001C
+#define BANKCON7 	0x48000020
+#define REFRESH 	0x48000024
+#define BANKSIZE 	0x48000028
+#define MRSRB6 		0x4800002C
+#define MRSRB7 		0x48000030
+
+#define ADDRESS_STACK_BASE 	0x33FF8000
+#define ADDRESS_STACK_USER 	(ADDRESS_STACK_BASE - 0x3800)
+#define ADDRESS_STACK_SVC 	(ADDRESS_STACK_BASE - 0x2800)
+#define ADDRESS_STACK_UNDEF (ADDRESS_STACK_BASE - 0x2400)
+#define ADDRESS_STACK_ABORT (ADDRESS_STACK_BASE - 0x2000)
+#define ADDRESS_STACK_IRQ 	(ADDRESS_STACK_BASE - 0x1000)
+#define ADDRESS_STACK_FIQ 	(ADDRESS_STACK_BASE - 0x0000)
+
+#define MODE_USER 	0x10
+#define MODE_FIQ 	0x11
+#define MODE_IRQ 	0x12
+#define MODE_SVC 	0x13
+#define MODE_ABORT 	0x17
+#define MODE_UNDEF 	0x1b
+#define MODE_MASK 	0x1f
+#define NOINT 		0xc0
+
+#define GPACON 		0x56000000
+#define GPBCON 		0x56000010
+#define GPCCON 		0x56000020
+#define GPDCON 		0x56000030
+#define GPECON 		0x56000040
+#define GPFCON 		0x56000050
+#define GPGCON 		0x56000060
+#define GPHCON 		0x56000070
+#define GPJCON 		0x560000d0
+
+#define GPADAT 		0x56000004
+#define GPBDAT 		0x56000014
+#define GPCDAT 		0x56000024
+#define GPDDAT 		0x56000034
+#define GPEDAT 		0x56000044
+#define GPFDAT 		0x56000054
+#define GPGDAT 		0x56000064
+#define GPHDAT 		0x56000074
+#define GPJDAT 		0x560000d4
+
+#define GPBUP 		0x5600001C
+
+#define __IO 		*(volatile unsigned long *)
+
+#endif
+
