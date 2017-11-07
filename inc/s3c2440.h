@@ -40,6 +40,7 @@
 #define MODE_MASK 	0x1f
 #define NOINT 		0xc0
 
+/* GPIO Registers */
 #define GPACON 		0x56000000
 #define GPBCON 		0x56000010
 #define GPCCON 		0x56000020
@@ -61,6 +62,50 @@
 #define GPJDAT 		0x560000d4
 
 #define GPBUP 		0x5600001C
+
+/* UART Registers */
+
+#define ULCON0 		0x50000000
+#define ULCON1 		0x50004000
+#define ULCON2 		0x50008000
+
+#define UCON0 		0x50000004
+#define UCON1 		0x50004004
+#define UCON2 		0x50008004
+
+#define UFCON0 		0x50000008
+#define UFCON1 		0x50004008
+#define UFCON2 		0x50008008
+
+#define UMCON0 		0x5000000C
+#define UMCON1 		0x5000400C
+
+#define UTRSTAT0 	0x50000010
+#define UTRSTAT1 	0x50004010
+#define UTRSTAT2 	0x50008010
+
+#define UERSTAT0 	0x50000014
+#define UERSTAT1 	0x50004014
+#define UERSTAT2 	0x50008014
+
+#define UFSTAT0 	0x50000018
+#define UFSTAT1 	0x50004018
+#define UFSTAT2 	0x50008018
+
+#define UMSTAT0 	0x5000001C
+#define UMSTAT1 	0x5000401C
+
+#define UTXH0 		0x50000020
+#define UTXH1 		0x50004020
+#define UTXH2 		0x50008020
+
+#define URXH0 		0x50000024
+#define URXH1 		0x50004024
+#define URXH2 		0x50008024
+
+#define UBRDIV0 	0x50000028
+#define UBRDIV1 	0x50004028
+#define UBRDIV2 	0x50008028
 
 #define __IO 		*(volatile unsigned long *)
 
