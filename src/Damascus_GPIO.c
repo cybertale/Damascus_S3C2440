@@ -77,12 +77,12 @@ void Damascus_GPIO_Init(GPIO_PORT port, uint8_t pin, uint8_t mode)
 			__IO __GPIOControlRegs[port] &=~ (0x3 << (pin << 1));
 			__IO __GPIOControlRegs[port] |=  (0x1 << (pin << 1));
 		}
-		else if(mode == GPIO_MODE_SPECIAL1)
+		else if(mode == GPIO_MODE_SPECIAL0)
 		{
 			__IO __GPIOControlRegs[port] &=~ (0x3 << (pin << 1));
 			__IO __GPIOControlRegs[port] |=  (0x2 << (pin << 1));
 		}
-		else if(mode == GPIO_MODE_SPECIAL2)
+		else if(mode == GPIO_MODE_SPECIAL1)
 		{
 #ifdef Damascus_Assert
 			/*Pin filter. */
