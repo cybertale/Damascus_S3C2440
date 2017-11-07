@@ -3,11 +3,11 @@ OBJECT_DIR=Objects
 CC=arm-linux-gcc
 CFLAGS=-g -Iinc/ -I../includes/
 
-objs=$(OBJECT_DIR)/Damascus_GPIO.o 
-
-all: GPIO
-#	$(CC) $(CFLAGS) -o $(OBJECT_DIR)/Damascus.o $(objs)
+all: modules
 	ar crv $(OBJECT_DIR)/libDamascus.a $(OBJECT_DIR)/*.o
 
-GPIO:
-	$(CC) $(CFLAGS) -c -o $(OBJECT_DIR)/Damascus_GPIO.o $(SOURCE_DIR)/Damascus_GPIO.c
+modules:
+	for name in $(wildcard $(SOURCE_DIR)/*.c); \
+	do \
+		echo "$$name" | awk -F '.' '{print $$1}' | awk -F '/' '{print sprintf("%s.o", $$2)}' | xargs -I {} $(CC) $(CFLAGS) -c -o $(OBJECT_DIR)/{} $$name; \
+	done
