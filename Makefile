@@ -9,5 +9,8 @@ all: modules
 modules:
 	for name in $(wildcard $(SOURCE_DIR)/*.c); \
 	do \
-		echo "$$name" | awk -F '.' '{print $$1}' | awk -F '/' '{print sprintf("%s.o", $$2)}' | xargs -I {} $(CC) $(CFLAGS) -c -o $(OBJECT_DIR)/{} $$name; \
+		echo "$$name" |\
+		awk -F '.' '{print $$1}' |\
+	   	awk -F '/' '{print sprintf("%s.o", $$2)}' |\
+	   	xargs -I {} $(CC) $(CFLAGS) -c -o $(OBJECT_DIR)/{} $$name; \
 	done
