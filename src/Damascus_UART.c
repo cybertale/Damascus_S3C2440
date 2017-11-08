@@ -48,9 +48,7 @@ unsigned long __UARTTRStatusRegs[] = {
   */
 void assertFailed(char *str, char *file, int line)
 {
-//	char strBuffer[200] = {0};
-//	sprintf(strBuffer, "%s, file: %s, line: %d", str, file, line); 
-//	Damascus_UART_SendString(UART0, strBuffer);
+	Damascus_UART_SendString(UART0, "%s, file: %s, line: %d", str, file, line); 
 	while(1)
 	{
 	}
@@ -72,7 +70,7 @@ void Damascus_UART_Clock_IO_Init(UART_PORT port)
 #ifdef	Damascus_Assert
 	else
 	{
-		Assert_Failed(); 
+		assertFailed("port error", __FILE__, __LINE__); 
 	}
 #endif
 }
@@ -98,8 +96,8 @@ void Damascus_UART_SendBuff(UART_PORT port, uint8_t *buff, uint16_t count)
 {
 	uint16_t i = 0;
 #ifdef Damascus_Assert
-	if(!Damascus_UART_isInit[port])
-		AssertFailed("Port not Initialized. ", __FILE__, __LINE__); 
+//	if(!Damascus_UART_isInit[port])
+//		AssertFailed("Port not Initialized. ", __FILE__, __LINE__); 
 #endif
 	for(i = 0; i < count; i++)
 	{
@@ -122,8 +120,8 @@ void Damascus_UART_SendString(UART_PORT port, const char *fmt, ...)
 	va_list ap;
 
 #ifdef Damascus_Assert
-	if(!Damascus_UART_isInit[port])
-		AssertFailed("Port not Initialized. ", __FILE__, __LINE__); 
+/*	if(!Damascus_UART_isInit[port])
+		AssertFailed("Port not Initialized. ", __FILE__, __LINE__);*/ 
 #endif
 
 	va_start(ap, fmt);

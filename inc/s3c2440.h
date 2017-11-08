@@ -109,5 +109,7 @@
 
 #define __IO 		*(volatile unsigned long *)
 
+#define Damascus_Assert
+
 #endif
 

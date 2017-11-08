@@ -39,8 +39,8 @@ unsigned long  __GPIODataRegs[] = {
 #ifdef Damascus_Assert
 void Damascus_GPIO_AssertPinNumber(GPIO_PORT port, uint8_t pin)
 {
-/*	if(pin > __maxIndexOfPort[port])
-		assertFailed()*/
+	if(pin > __maxIndexOfPort[port])
+		assertFailed("pin number exceeded.", __FILE__, __LINE__);
 }
 #endif
 
@@ -48,7 +48,7 @@ void Damascus_GPIO_Init(GPIO_PORT port, uint8_t pin, uint8_t mode)
 {
 
 #ifdef Damascus_Assert
-	Damscus_GPIO_AssertPinNumber(port, pin);
+	Damascus_GPIO_AssertPinNumber(port, pin);
 #endif
 	if(port == GPIOA)
 	{
@@ -56,16 +56,16 @@ void Damascus_GPIO_Init(GPIO_PORT port, uint8_t pin, uint8_t mode)
 		{
 			__IO GPACON &=~ (1 << pin);
 		}
-		else if(mode == GPIO_MODE_SPECIAL1)
+		else if(mode == GPIO_MODE_SPECIAL0)
 		{
 			__IO GPACON |= (1 << pin);
 		}
 #ifdef Damascus_Assert
 		else
-			assertFailed();
+			assertFailed("GPA mode error", __FILE__, __LINE__);
 #endif
 	}
-	else
+	else if(port <= GPIOJ)
 	{
 
 		if(mode == GPIO_MODE_INPUT)
@@ -92,14 +92,14 @@ void Damascus_GPIO_Init(GPIO_PORT port, uint8_t pin, uint8_t mode)
 #ifdef Damascus_Assert
 		else
 		{
-			assertFailed();
+			assertFailed("mode error", __FILE__, __LINE__);
 		}
 #endif
 	}
 #ifdef Damascus_Assert
 	else
 	{
-		assertFailed();
+		assertFailed("port error", __FILE__, __LINE__);
 	}
 #endif
 }
