@@ -41,73 +41,75 @@
 #define NOINT 		0xc0
 
 /* GPIO Registers */
-#define GPACON 		0x56000000
-#define GPBCON 		0x56000010
-#define GPCCON 		0x56000020
-#define GPDCON 		0x56000030
-#define GPECON 		0x56000040
-#define GPFCON 		0x56000050
-#define GPGCON 		0x56000060
-#define GPHCON 		0x56000070
-#define GPJCON 		0x560000d0
 
-#define GPADAT 		0x56000004
-#define GPBDAT 		0x56000014
-#define GPCDAT 		0x56000024
-#define GPDDAT 		0x56000034
-#define GPEDAT 		0x56000044
-#define GPFDAT 		0x56000054
-#define GPGDAT 		0x56000064
-#define GPHDAT 		0x56000074
-#define GPJDAT 		0x560000d4
+typedef struct {
+	volatile uint32_t CON;
+	volatile uint32_t DAT;
+	volatile uint32_t UP;
+}GPIO_TypeDef;
 
-#define GPBUP 		0x5600001C
+#define GPA 		((GPIO_TypeDef *)0x56000000)
+#define GPB 		((GPIO_TypeDef *)0x56000010)
+#define GPC 		((GPIO_TypeDef *)0x56000020)
+#define GPD 		((GPIO_TypeDef *)0x56000030)
+#define GPE 		((GPIO_TypeDef *)0x56000040)
+#define GPF 		((GPIO_TypeDef *)0x56000050)
+#define GPG 		((GPIO_TypeDef *)0x56000060)
+#define GPH 		((GPIO_TypeDef *)0x56000070)
+#define GPJ 		((GPIO_TypeDef *)0x560000d0)
 
 /* UART Registers */
 
-#define ULCON0 		0x50000000
-#define ULCON1 		0x50004000
-#define ULCON2 		0x50008000
+typedef struct {
+	volatile uint32_t LCON;
+	volatile uint32_t CON;
+	volatile uint32_t FCON;
+	volatile uint32_t MCON;
+	volatile uint32_t TRSTAT;
+	volatile uint32_t ERSTAT;
+	volatile uint32_t FSTAT;
+	volatile uint32_t MSTAT;
+	volatile uint32_t TXH;
+	volatile uint32_t RXH;
+	volatile uint32_t BRDIV;
+}UART_TypeDef;
+#define UART0 		((UART_TypeDef *)0x50000000)
+#define UART1 		((UART_TypeDef *)0x50004000)
+#define UART2 		((UART_TypeDef *)0x50008000)
 
-#define UCON0 		0x50000004
-#define UCON1 		0x50004004
-#define UCON2 		0x50008004
+/* NAND Flash Controller Registers */
+typedef struct {
+	volatile uint32_t CONF;
+	volatile uint32_t CONT;
+	volatile uint32_t CMMD;
+	volatile uint32_t ADDR;
+	volatile uint32_t DATA;
+	volatile uint32_t MECCD0;
+	volatile uint32_t MECCD1;
+	volatile uint32_t ECCD;
+	volatile uint32_t STAT;
+	volatile uint32_t ESTAT0;
+	volatile uint32_t ESTAT1;
+	volatile uint32_t MECC0;
+	volatile uint32_t MECC1;
+	volatile uint32_t SECC;
+	volatile uint32_t SBLK;
+	volatile uint32_t EBLK;
+}NAND_TypeDef;
 
-#define UFCON0 		0x50000008
-#define UFCON1 		0x50004008
-#define UFCON2 		0x50008008
+#define NAND 	((NAND_TypeDef *)0x4E000000)
 
-#define UMCON0 		0x5000000C
-#define UMCON1 		0x5000400C
+/* IIC Registers */
 
-#define UTRSTAT0 	0x50000010
-#define UTRSTAT1 	0x50004010
-#define UTRSTAT2 	0x50008010
+typedef struct {
+	volatile uint32_t CON;
+	volatile uint32_t STAT;
+	volatile uint32_t ADD;
+	volatile uint32_t DS;
+	volatile uint32_t CLC;
+}IIC_TypeDef;
 
-#define UERSTAT0 	0x50000014
-#define UERSTAT1 	0x50004014
-#define UERSTAT2 	0x50008014
-
-#define UFSTAT0 	0x50000018
-#define UFSTAT1 	0x50004018
-#define UFSTAT2 	0x50008018
-
-#define UMSTAT0 	0x5000001C
-#define UMSTAT1 	0x5000401C
-
-#define UTXH0 		0x50000020
-#define UTXH1 		0x50004020
-#define UTXH2 		0x50008020
-
-#define URXH0 		0x50000024
-#define URXH1 		0x50004024
-#define URXH2 		0x50008024
-
-#define UBRDIV0 	0x50000028
-#define UBRDIV1 	0x50004028
-#define UBRDIV2 	0x50008028
-
-#define __IO 		*(volatile unsigned long *)
+#define IIC 	((IIC_TypeDef *)0x54000000)
 
 #define Damascus_Assert
 
