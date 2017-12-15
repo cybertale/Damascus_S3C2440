@@ -7,14 +7,6 @@
 #define INTMSK 		0x4A000008
 #define INTSUBMSK 	0x4A00001C
 
-#define LOCKTIME 	0x4c000000
-#define MPLLCON 	0x4C000004
-#define CLKDIVN 	0x4C000014
-#define FCLK 		320000000
-#define M_MDIV 		127
-#define M_PDIV 		2
-#define M_SDIV 		1
-
 #define BWSCON 		0x48000000
 #define BANKCON6 	0x4800001C
 #define BANKCON7 	0x48000020
@@ -110,6 +102,19 @@ typedef struct {
 }IIC_TypeDef;
 
 #define IIC 	((IIC_TypeDef *)0x54000000)
+
+/* Clock and Power Management */
+
+typedef struct {
+	volatile uint32_t LOCKTIME;
+	volatile uint32_t MPLL;
+	volatile uint32_t UPLL;
+	volatile uint32_t CLKCON;
+	volatile uint32_t CLKSLOW;
+	volatile uint32_t CLKDIVN;
+}CLOCK_TypeDef;
+
+#define CLOCK 	((CLOCK_TypeDef *)0x4C000014)
 
 #define Damascus_Assert
 
